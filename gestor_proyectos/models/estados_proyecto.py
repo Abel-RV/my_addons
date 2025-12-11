@@ -1,14 +1,12 @@
-    from odoo import models, fields, api
+from odoo import models, fields, api
 
+class estados_proyecto(models.Model):
+    _name = 'gestor_proyectos.estados_proyecto'
+    _description = 'gestor_proyectos.estados_proyecto'
 
-    class estado_proyectos(models.Model):
-        _name = 'gestor_proyectos.gestors'
-        _description = 'gestor_proyectos.gestor_proyectos'
-
-        name = fields.Char()
-        value = fields.Integer()
-        value2 = fields.Float(compute="_value_pc", store=True)
-        description = fields.Text()
+    nombreEstado = fields.Char(string="Nombre del Estado", required=True)
+    descripcionEstado = fields.Text(string="Descripción del Estado")
+    proyecto_ids = fields.One2many('gestor_proyectos.proyecto', 'estado_id', string="Proyectos Asociados")
 
 #   @api.depends('value')
 #    def _value_pc(self):

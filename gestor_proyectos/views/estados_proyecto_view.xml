@@ -1,0 +1,37 @@
+<odoo>
+    <data>
+    <!-- explicit list view definition -->
+        <record model="ir.ui.view" id="view_estado_proyectos_list">
+            <field name="name">Estado Proyectos List</field>
+            <field name="model">gestor_proyectos.estado_proyectos</field>
+            <field name="arch" type="xml">
+                <list>
+                    <field name="nombreEstado"/>
+                    <field name="descripcionEstado"/>
+                </list>
+            </field>
+        </record>
+
+        <!-- Form view definition -->
+        <record model="ir.ui.view" id="view_estado_proyectos_form">
+            <field name="name">Estado Proyectos Form</field>
+            <field name="model">gestor_proyectos.estado_proyectos</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="nombreEstado"/>
+                        <field name="descripcionEstado"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="action_estado_proyectos">
+            <field name="name">Estados de Proyectos</field>
+            <field name="res_model">gestor_proyectos.estado_proyectos</field>
+            <field name="view_mode">list,form</field>
+        </record>
+        
+        <menuitem name="Estados de Proyectos" id="menu_estado_proyectos" parent="menu_proyectos"
+                action="action_estado_proyectos"/>
+    </data>
+</odoo>

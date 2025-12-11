@@ -15,3 +15,4 @@ class proyecto(models.Model):
     ], string="Prioridad", default='media')
     responsable = fields.Char(string="Responsable")
     progreso = fields.Integer(string="Progreso (%)", default=0) 
+    estado_id = fields.Many2one('gestor_proyectos.estados_proyecto', string="Estado del Proyecto")
