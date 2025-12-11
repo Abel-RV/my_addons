@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!-- Libro 1 -->
+        <record id="libro_1" model="libreria_b.libro">
+            <field name="nombreLibro">Cien años de soledad</field>
+            <field name="descripcion">Obra maestra de Gabriel García Márquez que narra la historia de la familia Buendía a lo largo de varias generaciones en el pueblo ficticio de Macondo.</field>
+            <field name="numPaginas">471</field>
+            <field name="precio">18.90</field>
+            <field name="disponible">True</field>
+            <field name="fechaPublicacion">1967-06-05</field>
+            <field name="autor">Gabriel García Márquez</field>
+            <field name="edad">40</field>
+        </record>
+
+        <!-- Libro 2 -->
+        <record id="libro_2" model="libreria_b.libro">
+            <field name="nombreLibro">Don Quijote de la Mancha</field>
+            <field name="descripcion">Novela escrita por Miguel de Cervantes considerada una de las obras más destacadas de la literatura española y universal.</field>
+            <field name="numPaginas">863</field>
+            <field name="precio">25.50</field>
+            <field name="disponible">True</field>
+            <field name="fechaPublicacion">1605-01-16</field>
+            <field name="autor">Miguel de Cervantes</field>
+            <field name="edad">58</field>
+        </record>
+
+        <!-- Libro 3 -->
+        <record id="libro_3" model="libreria_b.libro">
+            <field name="nombreLibro">1984</field>
+            <field name="descripcion">Novela distópica de George Orwell que presenta un futuro totalitario donde el Gran Hermano vigila constantemente a los ciudadanos.</field>
+            <field name="numPaginas">326</field>
+            <field name="precio">16.95</field>
+            <field name="disponible">False</field>
+            <field name="fechaPublicacion">1949-06-08</field>
+            <field name="autor">George Orwell</field>
+            <field name="edad">46</field>
+        </record>
+
+        <!-- Libro 4 -->
+        <record id="libro_4" model="libreria_b.libro">
+            <field name="nombreLibro">El Principito</field>
+            <field name="descripcion">Novela corta de Antoine de Saint-Exupéry que cuenta la historia de un pequeño príncipe que viaja de planeta en planeta.</field>
+            <field name="numPaginas">96</field>
+            <field name="precio">12.00</field>
+            <field name="disponible">True</field>
+            <field name="fechaPublicacion">1943-04-06</field>
+            <field name="autor">Antoine de Saint-Exupéry</field>
+            <field name="edad">43</field>
+        </record>
+
+        <!-- Libro 5 -->
+        <record id="libro_5" model="libreria_b.libro">
+            <field name="nombreLibro">Harry Potter y la piedra filosofal</field>
+            <field name="descripcion">Primer libro de la saga de Harry Potter escrita por J.K. Rowling sobre un joven mago que descubre su identidad mágica.</field>
+            <field name="numPaginas">223</field>
+            <field name="precio">19.95</field>
+            <field name="disponible">True</field>
+            <field name="fechaPublicacion">1997-06-26</field>
+            <field name="autor">J.K. Rowling</field>
+            <field name="edad">32</field>
+        </record>
+
+        <!-- Libro 6 -->
+        <record id="libro_6" model="libreria_b.libro">
+            <field name="nombreLibro">Orgullo y prejuicio</field>
+            <field name="descripcion">Novela romántica de Jane Austen que sigue la evolución de Elizabeth Bennet mientras lidia con temas de moralidad, educación y matrimonio.</field>
+            <field name="numPaginas">432</field>
+            <field name="precio">14.50</field>
+            <field name="disponible">True</field>
+            <field name="fechaPublicacion">1813-01-28</field>
+            <field name="autor">Jane Austen</field>
+            <field name="edad">37</field>
+        </record>
+
+        <!-- Libro 7 -->
+        <record id="libro_7" model="libreria_b.libro">
+            <field name="nombreLibro">El Señor de los Anillos: La Comunidad del Anillo</field>
+            <field name="descripcion">Primera parte de la trilogía épica de fantasía de J.R.R. Tolkien que sigue la misión de destruir el Anillo Único.</field>
+            <field name="numPaginas">423</field>
+            <field name="precio">22.00</field>
+            <field name="disponible">False</field>
+            <field name="fechaPublicacion">1954-07-29</field>
+            <field name="autor">J.R.R. Tolkien</field>
+            <field name="edad">62</field>
+        </record>
+
+        <!-- Libro 8 -->
+        <record id="libro_8" model="libreria_b.libro">
+            <field name="nombreLibro">Crónica de una muerte anunciada</field>
+            <field name="descripcion">Novela de Gabriel García Márquez que reconstruye la historia de un asesinato en un pueblo colombiano.</field>
+            <field name="numPaginas">122</field>
+            <field name="precio">13.90</field>
+            <field name="disponible">True</field>
+            <field name="fechaPublicacion">1981-04-01</field>
+            <field name="autor">Gabriel García Márquez</field>
+            <field name="edad">54</field>
+        </record>
+
+        <!-- Libro 9 -->
+        <record id="libro_9" model="libreria_b.libro">
+            <field name="nombreLibro">La sombra del viento</field>
+            <field name="descripcion">Novela de Carlos Ruiz Zafón ambientada en la Barcelona de posguerra, donde un joven descubre un libro misterioso.</field>
+            <field name="numPaginas">576</field>
+            <field name="precio">21.90</field>
+            <field name="disponible">True</field>
+            <field name="fechaPublicacion">2001-04-17</field>
+            <field name="autor">Carlos Ruiz Zafón</field>
+            <field name="edad">36</field>
+        </record>
+
+        <!-- Libro 10 -->
+        <record id="libro_10" model="libreria_b.libro">
+            <field name="nombreLibro">El código Da Vinci</field>
+            <field name="descripcion">Thriller de Dan Brown que mezcla historia, arte y teorías conspirativas sobre el cristianismo.</field>
+            <field name="numPaginas">489</field>
+            <field name="precio">17.95</field>
+            <field name="disponible">True</field>
+            <field name="fechaPublicacion">2003-03-18</field>
+            <field name="autor">Dan Brown</field>
+            <field name="edad">38</field>
+        </record>
+
+        <!-- Libro 11 -->
+        <record id="libro_11" model="libreria_b.libro">
+            <field name="nombreLibro">Rayuela</field>
+            <field name="descripcion">Novela experimental de Julio Cortázar que puede ser leída de múltiples formas siguiendo diferentes capítulos.</field>
+            <field name="numPaginas">635</field>
+            <field name="precio">20.00</field>
+            <field name="disponible">False</field>
+            <field name="fechaPublicacion">1963-06-28</field>
+            <field name="autor">Julio Cortázar</field>
+            <field name="edad">49</field>
+        </record>
+
+        <!-- Libro 12 -->
+        <record id="libro_12" model="libreria_b.libro">
+            <field name="nombreLibro">La casa de los espíritus</field>
+            <field name="descripcion">Primera novela de Isabel Allende que narra la historia de la familia Trueba a lo largo de cuatro generaciones.</field>
+            <field name="numPaginas">433</field>
+            <field name="precio">19.50</field>
+            <field name="disponible">True</field>
+            <field name="fechaPublicacion">1982-01-01</field>
+            <field name="autor">Isabel Allende</field>
+            <field name="edad">39</field>
+        </record>
+
+        <!-- Libro 13 -->
+        <record id="libro_13" model="libreria_b.libro">
+            <field name="nombreLibro">Los juegos del hambre</field>
+            <field name="descripcion">Novela distópica de Suzanne Collins sobre una joven que participa en unos mortales juegos televisados.</field>
+            <field name="numPaginas">374</field>
+            <field name="precio">16.50</field>
+            <field name="disponible">True</field>
+            <field name="fechaPublicacion">2008-09-14</field>
+            <field name="autor">Suzanne Collins</field>
+            <field name="edad">46</field>
+        </record>
+
+        <!-- Libro 14 -->
+        <record id="libro_14" model="libreria_b.libro">
+            <field name="nombreLibro">El nombre de la rosa</field>
+            <field name="descripcion">Novela histórica de Umberto Eco ambientada en un monasterio benedictino donde ocurren misteriosos asesinatos.</field>
+            <field name="numPaginas">638</field>
+            <field name="precio">23.00</field>
+            <field name="disponible">True</field>
+            <field name="fechaPublicacion">1980-01-01</field>
+            <field name="autor">Umberto Eco</field>
+            <field name="edad">48</field>
+        </record>
+
+        <!-- Libro 15 -->
+        <record id="libro_15" model="libreria_b.libro">
+            <field name="nombreLibro">La metamorfosis</field>
+            <field name="descripcion">Relato de Franz Kafka sobre Gregor Samsa, quien una mañana despierta convertido en un insecto gigante.</field>
+            <field name="numPaginas">74</field>
+            <field name="precio">9.95</field>
+            <field name="disponible">True</field>
+            <field name="fechaPublicacion">1915-10-01</field>
+            <field name="autor">Franz Kafka</field>
+            <field name="edad">32</field>
+        </record>
+
+        <!-- Libro 16 -->
+        <record id="libro_16" model="libreria_b.libro">
+            <field name="nombreLibro">El alquimista</field>
+            <field name="descripcion">Novela de Paulo Coelho sobre un joven pastor andaluz que emprende un viaje en busca de un tesoro.</field>
+            <field name="numPaginas">192</field>
+            <field name="precio">15.90</field>
+            <field name="disponible">False</field>
+            <field name="fechaPublicacion">1988-01-01</field>
+            <field name="autor">Paulo Coelho</field>
+            <field name="edad">41</field>
+        </record>
+
+        <!-- Libro 17 -->
+        <record id="libro_17" model="libreria_b.libro">
+            <field name="nombreLibro">Los pilares de la Tierra</field>
+            <field name="descripcion">Novela histórica de Ken Follett sobre la construcción de una catedral en la Inglaterra medieval.</field>
+            <field name="numPaginas">1008</field>
+            <field name="precio">28.95</field>
+            <field name="disponible">True</field>
+            <field name="fechaPublicacion">1989-10-01</field>
+            <field name="autor">Ken Follett</field>
+            <field name="edad">40</field>
+        </record>
+
+        <!-- Libro 18 -->
+        <record id="libro_18" model="libreria_b.libro">
+            <field name="nombreLibro">Fahrenheit 451</field>
+            <field name="descripcion">Novela distópica de Ray Bradbury sobre una sociedad futura donde los libros están prohibidos.</field>
+            <field name="numPaginas">158</field>
+            <field name="precio">14.95</field>
+            <field name="disponible">True</field>
+            <field name="fechaPublicacion">1953-10-19</field>
+            <field name="autor">Ray Bradbury</field>
+            <field name="edad">33</field>
+        </record>
+
+        <!-- Libro 19 -->
+        <record id="libro_19" model="libreria_b.libro">
+            <field name="nombreLibro">El gran Gatsby</field>
+            <field name="descripcion">Novela de F. Scott Fitzgerald sobre la era del jazz en Estados Unidos y el sueño americano.</field>
+            <field name="numPaginas">180</field>
+            <field name="precio">13.50</field>
+            <field name="disponible">True</field>
+            <field name="fechaPublicacion">1925-04-10</field>
+            <field name="autor">F. Scott Fitzgerald</field>
+            <field name="edad">29</field>
+        </record>
+
+        <!-- Libro 20 -->
+        <record id="libro_20" model="libreria_b.libro">
+            <field name="nombreLibro">El túnel</field>
+            <field name="descripcion">Novela psicológica de Ernesto Sabato que explora la obsesión y la soledad a través de un pintor atormentado.</field>
+            <field name="numPaginas">142</field>
+            <field name="precio">11.90</field>
+            <field name="disponible">True</field>
+            <field name="fechaPublicacion">1948-01-01</field>
+            <field name="autor">Ernesto Sabato</field>
+            <field name="edad">37</field>
+        </record>
+
+        <!-- Autores de prueba -->
+        <record id="autor_1" model="libreria_b.autor">
+            <field name="nombre">Gabriel García Márquez</field>
+        </record>
+
+        <record id="autor_2" model="libreria_b.autor">
+            <field name="nombre">Isabel Allende</field>
+        </record>
+
+        <record id="autor_3" model="libreria_b.autor">
+            <field name="nombre">Mario Vargas Llosa</field>
+        </record>
+
+        <record id="autor_4" model="libreria_b.autor">
+            <field name="nombre">Jorge Luis Borges</field>
+        </record>
+
+        <record id="autor_5" model="libreria_b.autor">
+            <field name="nombre">Pablo Neruda</field>
+        </record>
+
+        <record id="autor_6" model="libreria_b.autor">
+            <field name="nombre">Julio Cortázar</field>
+        </record>
+
+        <record id="autor_7" model="libreria_b.autor">
+            <field name="nombre">Octavio Paz</field>
+        </record>
+
+        <record id="autor_8" model="libreria_b.autor">
+            <field name="nombre">Carlos Fuentes</field>
+        </record>
+
+        <record id="autor_9" model="libreria_b.autor">
+            <field name="nombre">Laura Esquivel</field>
+        </record>
+
+        <record id="autor_10" model="libreria_b.autor">
+            <field name="nombre">Miguel de Cervantes</field>
+        </record>
+    </data>
+</odoo>

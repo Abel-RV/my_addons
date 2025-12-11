@@ -1,0 +1,166 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="libreria_b.libro_list">
+      <field name="name">libreriaB form</field>
+      <field name="model">libreria_b.libro</field>
+      <field name="arch" type="xml">
+        <list string="Listado de libros">
+          <field name="nombreLibro"/>
+          <!--<field name="autor"/>-->
+          <field name="numPaginas"/>
+          <field name="precio"/>
+          <field name="disponible" widget="boolean_toggle"/>
+        </list>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="libreria_b.libro_form">
+      <field name="name">libreriaB form</field>
+      <field name="model">libreria_b.libro</field>
+      <field name="arch" type="xml">
+        <form string="Formulario Libro">
+          <sheet>
+            <notebook>
+              <page string="Detalles libro">
+                <group>
+                  <field name="portada" widget="image" option="{'size':[150,250]}"/>
+                  <group name="name" string="string">
+                    <field name="nombreLibro"/>
+                    <field name="descripcion"/>
+                  </group>
+                  <group>
+                    <field name="numPaginas"/>
+                    <field name="precio"/>
+                  </group>
+                </group>
+                <group>
+                  <field name="disponible" widget="boolean_toggle"/>
+                  <field name="fechaPublicacion"/>
+                  <field name="fechaRegistro"/>
+                </group>
+              </page>
+              <page string="Autores">
+                <group>
+                <field name="autores_ids"/>
+                </group>
+              </page>
+            </notebook>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record id="libreria_b.editorial_list" model="ir.ui.view">
+      <field name="name">editorial_list</field>
+      <field name="model">libreria_b.editorial</field>
+      <field name="arch" type="xml">
+        <list string="Listado de Editoriales">
+          <field name="name"/>
+        </list>
+      </field>
+    </record>
+
+    <record id="view_autor_form" model="ir.ui.view">
+      <field name="name">libreria_b_autor_form</field>
+      <field name="model">libreria_b.autor</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+              <field name="nombre"/>
+            </group>
+            <notebook>
+              <page name="Libros publicados" string="string">
+                <field name="libros_ids"/>
+              </page>
+            </notebook>
+          </sheet>
+        </form>
+      </field>
+    </record>
+    <record id="libreria_b.editorial_form" model="ir.ui.view">
+      <field name="name">libreria_b.editorial_form</field>
+      <field name="model">libreria_b.editorial</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+              <field name="name"/>
+            </group>
+            <notebook>
+              <page name="Libros publicados" string="string">
+                <field name="libros_ids"/>
+              </page>
+            </notebook>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <!-- Vista lista de autores -->
+    <record model="ir.ui.view" id="libreria_b.autor_list">
+      <field name="name">Autores list</field>
+      <field name="model">libreria_b.autor</field>
+      <field name="arch" type="xml">
+        <list>
+          <field name="nombre"/>
+        </list>
+      </field>
+    </record>
+
+    <!-- Action para autores -->
+    <record model="ir.actions.act_window" id="libreria_b.autor_action_window">
+      <field name="name">Listado de Autores</field>
+      <field name="res_model">libreria_b.autor</field>
+      <field name="view_mode">list,form</field>
+    </record>
+
+    <!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="libreria_b.libro_action_window">
+      <field name="name">Listado libros</field>
+      <field name="res_model">libreria_b.libro</field>
+      <field name="view_mode">list,form</field>
+    </record>
+    <record id="libreria_b.editorial_action_window" model="ir.actions.act_window">
+      <field name="name">Listado de Editoriales</field>
+      <field name="res_model">libreria_b.editorial</field>
+      <field name="view_mode">list,form</field>
+</record>
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="libreria_b.action_server">
+      <field name="name">libreriaB server</field>
+      <field name="model_id" ref="model_libreria_b_libreria_b"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "list,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+    <menuitem name="Libreria (IES JUAN BOSCO)" id="libreria_b.menu_root"/>
+    
+    <!-- menu categories -->
+    <menuitem name="Gestión de Libros" id="libreria_b.menu_1" parent="libreria_b.menu_root"/>
+    
+    <menuitem name="Autores" id="libreria_b.menu_2_list" parent="libreria_b.menu_1" action="libreria_b.autor_action_window"/>
+
+    <!-- actions -->
+    <menuitem name="Libros" id="libreria_b.menu_1_list" parent="libreria_b.menu_1"
+              action="libreria_b.libro_action_window"/>
+    <menuitem name="Editoriales" id="libreria_b.menu_editoriales" parent="libreria_b.menu_1"
+              action="libreria_b.editorial_action_window"/>
+
+    <!--<menuitem name="Server to list" id="libreria_b" parent="libreria_b.menu_2"
+              action="libreria_b.action_server"/>-->
+
+  </data>
+</odoo>
