@@ -1,0 +1,48 @@
+<odoo>
+    <data>
+        <!-- explicit list view definition -->
+        <record model="ir.ui.view" id="view_actividad_list">
+            <field name="name">Actividad List</field>
+            <field name="model">gestor_proyectos.actividad</field>
+            <field name="arch" type="xml">
+                <list>
+                    <field name="nombreActividad"/>
+                    <field name="descripcionActividad"/>
+                    <field name="fechaInicioActividad"/>
+                    <field name="fechaFinActividad"/>
+                    <field name="estadoActividad"/>
+                    <field name="proyecto_id"/>
+                </list>
+            </field>
+        </record>
+
+        <!-- Form view definition -->
+        <record model="ir.ui.view" id="view_actividad_form">
+            <field name="name">Actividad Form</field>
+            <field name="model">gestor_proyectos.actividad</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="nombreActividad"/>
+                            <field name="descripcionActividad"/>
+                            <field name="fechaInicioActividad"/>
+                            <field name="fechaFinActividad"/>
+                            <field name="estadoActividad"/>
+                            <field name="proyecto_id"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_actividad">
+            <field name="name">Actividades</field>
+            <field name="res_model">gestor_proyectos.actividad</field>
+            <field name="view_mode">list,form</field>
+        </record>
+
+        <menuitem name="Actividades" id="menu_actividades" parent="menu_proyectos"
+                action="action_actividad"/>
+    </data>
+</odoo>
