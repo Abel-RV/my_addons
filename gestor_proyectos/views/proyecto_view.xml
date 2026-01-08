@@ -15,8 +15,8 @@
                 <field name="fecha_fin"/>
                 <field name="estado"/>
                 <field name="responsable"/>
-                <field name="porcentaje_avance"/>
-                <!--<field name="trabajo_ids"/>-->
+                <field name="porcentaje_avance" widget="progressbar"/>
+                <field name="trabajo_ids"/>
                 <field name="avance_individual"/>
             </list>
         </field>
@@ -36,8 +36,8 @@
                         <field name="fecha_fin"/>
                         <field name="estado"/>
                         <field name="responsable"/>
-                        <field name="porcentaje_avance"/>
-                        <!--<field name="trabajo_ids"/>-->
+                        <field name="porcentaje_avance" widget="progressbar"/>
+                        <field name="trabajo_ids"/>
                         <field name="avance_individual"/>
                     </group>
                 </sheet>
@@ -53,5 +53,6 @@
 
     <menuitem name="Proyectos" id="menu_proyectos" parent="menu_gestor_proyectos"
             action="action_proyecto"/>
-  </data>
+            
+    </data>
 </odoo>

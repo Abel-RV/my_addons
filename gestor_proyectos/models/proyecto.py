@@ -15,7 +15,7 @@ class proyecto(models.Model):
         ('finalizado', 'Finalizado'),
         ('cancelado', 'Cancelado')
     ], string="Estado del Proyecto", default='en_planificacion')
-    responsable = fields.Char(string="Responsable del Proyecto")
+    responsable = fields.Many2one('res.users', string="Responsable del Proyecto")
     porcentaje_avance = fields.Float(string="Porcentaje de Avance", default=0.0)
-    #trabajo_ids = fields.One2many('gestor_proyectos.trabajo', 'proyecto_id', string="Trabajos Asociados")
+    trabajo_ids = fields.One2many('gestor_proyectos.trabajo', 'proyecto_id', string="Trabajos Asociados")
     avance_individual = fields.Float(string="Avance Individual", default=0.0)
