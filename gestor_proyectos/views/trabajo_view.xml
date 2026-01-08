@@ -1,0 +1,60 @@
+<odoo>
+    <data>
+        <record id="view_gestor_proyectos_trabajo_tree" model="ir.ui.view">
+            <field name="name">gestor_proyectos.trabajo.tree</field>
+            <field name="model">gestor_proyectos.trabajo</field>
+            <field name="arch" type="xml">
+                <list>
+                    <field name="descripcion"/>
+                    <field name="proyecto_id"/>
+                    <field name="responsable"/>
+                    <field name="fecha_inicio"/>
+                    <field name="fecha_fin"/>
+                    <field name="estado"/>
+                    <field name="promedio_avance"/>
+                <field name="actividad_ids"/>
+                <field name="importancia"/>
+                <field name="avance_individual"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_gestor_proyectos_trabajo_form" model="ir.ui.view">
+        <field name="name">gestor_proyectos.trabajo.form</field>
+        <field name="model">gestor_proyectos.trabajo</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="descripcion"/>
+                        <field name="proyecto_id"/>
+                        <field name="responsable"/>
+                        <field name="fecha_inicio"/>
+                        <field name="fecha_fin"/>
+                        <field name="estado"/>
+                        <field name="promedio_avance"/>
+                        <field name="actividad_ids"/>
+                        <field name="importancia"/>
+                        <field name="avance_individual"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_gestor_proyectos_trabajo" model="ir.actions.act_window">
+        <field name="name">Trabajos</field>
+        <field name="res_model">gestor_proyectos.trabajo</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <menuitem id="menu_gestor_proyectos_trabajo" name="Trabajos" parent="menu_proyectos"
+            action="action_gestor_proyectos_trabajo"/>
+
+            <record id="menu_gestor_proyectos_trabajo" model="ir.ui.menu">
+                <field name="name">Trabajos</field>
+                <field name="parent_id" ref="menu_proyectos"/>
+                <field name="action" ref="action_gestor_proyectos_trabajo"/>
+            </record>
+
+</data>
+</odoo>

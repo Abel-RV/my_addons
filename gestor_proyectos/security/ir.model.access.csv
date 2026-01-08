@@ -1,5 +1,4 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_gestor_proyectos_proyecto,gestor_proyectos.proyecto,model_gestor_proyectos_proyecto,base.group_user,1,1,1,1
-access_gestor_proyectos_estados_proyectos,gestor_proyectos.estados_proyecto,model_gestor_proyectos_estados_proyecto,base.group_user,1,1,1,1
 access_gestor_proyectos_actividad,gestor_proyectos.actividad,model_gestor_proyectos_actividad,base.group_user,1,1,1,1
 access_gestor_proyectos_trabajo,gestor_proyectos.trabajo,model_gestor_proyectos_trabajo,base.group_user,1,1,1,1
