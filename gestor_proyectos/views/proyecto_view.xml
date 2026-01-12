@@ -28,18 +28,35 @@
         <field name="model">gestor_proyectos.proyecto</field>
         <field name="arch" type="xml">
             <form>
+                <header>
+                    <field name="estado" widget="statusbar" options="{'clickable': 1}" statusbar_visible="borrador,en_planificacion,en_ejecucion,finalizado,cancelado"/>
+                </header>
                 <sheet>
                     <group>
                         <field name="name"/>
-                        <field name="descripcion"/>
-                        <field name="fecha_inicio"/>
-                        <field name="fecha_fin"/>
-                        <field name="estado"/>
                         <field name="responsable"/>
-                        <field name="porcentaje_avance" widget="progressbar"/>
-                        <field name="trabajo_ids"/>
-                        <field name="avance_individual"/>
                     </group>
+                    <notebook>
+                        <page string="Detalles">
+                            <group>
+                                <field name="descripcion"/>
+                                <field name="fecha_inicio"/>
+                                <field name="fecha_fin"/>
+                                <field name="avance_individual"/>
+                                <field name="porcentaje_avance" widget="progressbar"/>
+                            </group>
+                        </page>
+                        <page string="Trabajos">
+                            <field name="trabajo_ids">
+                                <list editable="bottom">
+                                    <field name="descripcion"/>
+                                    <field name="responsable"/>
+                                    <field name="promedio_avance" widget="progressbar"/>
+                                    <field name="estado"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
                 </sheet>
             </form>
         </field>

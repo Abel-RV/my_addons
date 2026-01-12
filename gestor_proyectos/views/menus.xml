@@ -1,0 +1,5 @@
+<odoo>
+  <data>
+    <menuitem name="Gestor de Proyectos" id="menu_gestor_proyectos" sequence="10"/>
+  </data>
+</odoo>

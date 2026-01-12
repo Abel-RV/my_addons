@@ -11,7 +11,7 @@
                     <field name="fechaInicioActividad"/>
                     <field name="fechaFinActividad"/>
                     <field name="estadoActividad"/>
-                    <field name="proyecto_id"/>
+                    <field name="trabajo_id"/>
                 </list>
             </field>
         </record>
@@ -22,6 +22,9 @@
             <field name="model">gestor_proyectos.actividad</field>
             <field name="arch" type="xml">
                 <form>
+                <header>
+                    <field name="estadoActividad" widget="statusbar" options="{'clickable':'1'}" statusbar_visible="borrador,en_planificacion,en_ejecucion,finalizado,cancelado"/>
+                </header>
                     <sheet>
                         <group>
                             <field name="nombreActividad"/>
@@ -29,7 +32,8 @@
                             <field name="fechaInicioActividad"/>
                             <field name="fechaFinActividad"/>
                             <field name="estadoActividad"/>
-                            <field name="proyecto_id"/>
+                            <field name="trabajo_id"/>
+                            <field name="avanceIndividual"/>
                         </group>
                     </sheet>
                 </form>
