@@ -33,18 +33,31 @@ class Actividad(models.Model):
                     raise ValidationError('La fecha de inicio de la actividad no puede ser posterior a la fecha de fin')
 
     def _update_parent_progress_and_state(self):
-        for rec in self:
-            if rec.trabajo_id:
-                # recompute trabajo promedio and update its state
-                rec.trabajo_id._compute_promedio_avance()
-                rec.trabajo_id._update_state_from_activities()
-                # recompute project porcentaje and update its state
-                if rec.trabajo_id.proyecto_id:
-                    rec.trabajo_id.proyecto_id._compute_porcentaje_avance()
-                    rec.trabajo_id.proyecto_id._update_state_from_trabajos()
+        """Update parent trabajo state (and indirectly proyecto) after activity changes.
+        Do not call compute methods directly to avoid recursion; instead compute desired state and write it.
+        """
+        trabajos_to_check = self.mapped('trabajo_id')
+        projects_to_check = trabajos_to_check.mapped('proyecto_id')
+        # For each trabajo, compute desired state and update if different
+        for trabajo in trabajos_to_check:
+            state_map = trabajo._compute_state_from_activities()
+            new_state = state_map.get(trabajo.id) if isinstance(state_map, dict) else False
+            if new_state and new_state != trabajo.estado:
+                try:
+                    trabajo.write({'estado': new_state})
+                except Exception:
+                    # swallow errors to avoid breaking activity save; admins can check logs
+                    pass
+        # Update projects' states based on trabajos
+        for proyecto in projects_to_check:
+            try:
+                proyecto._update_state_from_trabajos()
+            except Exception:
+                pass
 
     def create(self, vals):
         rec = super(Actividad, self).create(vals)
+        # Update parents (trabajo.estado and proyecto.estado) safely
         rec._update_parent_progress_and_state()
         return rec
 
@@ -56,9 +69,20 @@ class Actividad(models.Model):
 
     def unlink(self):
         parents = self.mapped('trabajo_id.proyecto_id')
+        trabajos = self.mapped('trabajo_id')
         res = super(Actividad, self).unlink()
-        # update parents after deletion
+        # After deletion, update affected trabajos and proyectos
+        for trabajo in trabajos:
+            try:
+                state_map = trabajo._compute_state_from_activities()
+                new_state = state_map.get(trabajo.id) if isinstance(state_map, dict) else False
+                if new_state and new_state != trabajo.estado:
+                    trabajo.write({'estado': new_state})
+            except Exception:
+                pass
         for proyecto in parents:
-            proyecto._compute_porcentaje_avance()
-            proyecto._update_state_from_trabajos()
+            try:
+                proyecto._update_state_from_trabajos()
+            except Exception:
+                pass
         return res

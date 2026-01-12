@@ -1,5 +1,5 @@
 {
-    'name': "Gestor de Proyectos",
+    'name': "Gestor de Proyectos Abel",
 
     'summary': "Planificar, organizar y hacer seguimiento de proyectos, trabajos y actividades",
 

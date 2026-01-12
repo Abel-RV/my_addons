@@ -35,16 +35,27 @@ class Trabajo(models.Model):
             else:
                 rec.promedio_avance = 0.0
 
-    @api.model
-    def create(self, vals):
-        # validate dates within project if provided
-        if vals.get('proyecto_id') and (vals.get('fecha_inicio') or vals.get('fecha_fin')):
-            proyecto = self.env['gestor_proyectos.proyecto'].browse(vals['proyecto_id'])
-            if proyecto.fecha_inicio and vals.get('fecha_inicio') and vals['fecha_inicio'] < proyecto.fecha_inicio:
-                raise ValidationError('La fecha de inicio del trabajo no puede ser anterior a la del proyecto')
-            if proyecto.fecha_fin and vals.get('fecha_fin') and vals['fecha_fin'] > proyecto.fecha_fin:
-                raise ValidationError('La fecha de fin del trabajo no puede ser posterior a la del proyecto')
-        return super(Trabajo, self).create(vals)
+    @api.model_create_multi
+    def create(self, vals_list):
+        # validate dates within project for each provided vals dict
+        for vals in vals_list:
+            if vals.get('proyecto_id') and (vals.get('fecha_inicio') or vals.get('fecha_fin')):
+                proyecto = self.env['gestor_proyectos.proyecto'].browse(vals['proyecto_id'])
+                # convert possible string dates to date objects for comparison
+                if proyecto.fecha_inicio and vals.get('fecha_inicio'):
+                    if fields.Date.to_date(vals['fecha_inicio']) < fields.Date.to_date(proyecto.fecha_inicio):
+                        raise ValidationError('La fecha de inicio del trabajo no puede ser anterior a la del proyecto')
+                if proyecto.fecha_fin and vals.get('fecha_fin'):
+                    if fields.Date.to_date(vals['fecha_fin']) > fields.Date.to_date(proyecto.fecha_fin):
+                        raise ValidationError('La fecha de fin del trabajo no puede ser posterior a la del proyecto')
+        recs = super(Trabajo, self).create(vals_list)
+        # Trigger parent updates by calling write with empty vals (will run trabajo.write logic)
+        try:
+            recs.write({})
+        except Exception:
+            # If something goes wrong, still return created records and let higher-level handlers surface errors
+            pass
+        return recs
 
     def write(self, vals):
         # validate dates within project if project and dates provided or changed
@@ -52,36 +63,59 @@ class Trabajo(models.Model):
             proyecto = rec.proyecto_id
             fecha_inicio = vals.get('fecha_inicio', rec.fecha_inicio)
             fecha_fin = vals.get('fecha_fin', rec.fecha_fin)
-            if proyecto and proyecto.fecha_inicio and fecha_inicio and fecha_inicio < proyecto.fecha_inicio:
-                raise ValidationError('La fecha de inicio del trabajo no puede ser anterior a la del proyecto')
-            if proyecto and proyecto.fecha_fin and fecha_fin and fecha_fin > proyecto.fecha_fin:
-                raise ValidationError('La fecha de fin del trabajo no puede ser posterior a la del proyecto')
+            # convert to date objects for safe comparison
+            if proyecto and proyecto.fecha_inicio and fecha_inicio:
+                if fields.Date.to_date(fecha_inicio) < fields.Date.to_date(proyecto.fecha_inicio):
+                    raise ValidationError('La fecha de inicio del trabajo no puede ser anterior a la del proyecto')
+            if proyecto and proyecto.fecha_fin and fecha_fin:
+                if fields.Date.to_date(fecha_fin) > fields.Date.to_date(proyecto.fecha_fin):
+                    raise ValidationError('La fecha de fin del trabajo no puede ser posterior a la del proyecto')
         res = super(Trabajo, self).write(vals)
-        # after write, update state based on activities
-        for rec in self:
-            rec._update_state_from_activities()
+        # After write, ensure parent project state is updated (do not update trabajo state here to avoid recursion)
+        projects = self.mapped('proyecto_id')
+        for proyecto in projects:
+            try:
+                proyecto._update_state_from_trabajos()
+            except Exception:
+                pass
         return res
 
-    def _update_state_from_activities(self):
+    def _compute_state_from_activities(self):
+        """Compute the desired state for the trabajo based on its activities without writing.
+        Returns a string state or False if no change."""
+        results = {}
         for rec in self:
             if not rec.actividad_ids:
-                # leave state as set by user if no activities
+                results[rec.id] = False
                 continue
             estados = set(rec.actividad_ids.mapped('estadoActividad'))
+            new_state = None
             if estados == {'finalizada'}:
-                rec.estado = 'finalizado'
+                new_state = 'finalizado'
             elif 'en_curso' in estados:
-                rec.estado = 'en_progreso'
+                new_state = 'en_progreso'
             elif 'en_revision' in estados:
-                rec.estado = 'en_revision'
+                new_state = 'en_revision'
             elif 'pendiente' in estados and len(estados) == 1:
-                rec.estado = 'pendiente'
+                new_state = 'pendiente'
             else:
-                # mixed states: prioritize in_progress -> revision -> pendiente
                 if 'en_curso' in estados:
-                    rec.estado = 'en_progreso'
+                    new_state = 'en_progreso'
                 elif 'en_revision' in estados:
-                    rec.estado = 'en_revision'
+                    new_state = 'en_revision'
                 else:
-                    rec.estado = 'pendiente'
-        return True
+                    new_state = 'pendiente'
+            results[rec.id] = new_state
+        # return mapping if multiple; for single record caller can index
+        return results
+
+    def unlink(self):
+        # collect affected projects before deletion
+        projects = self.mapped('proyecto_id')
+        res = super(Trabajo, self).unlink()
+        for proyecto in projects:
+            try:
+                proyecto._update_state_from_trabajos()
+            except Exception:
+                pass
+        return res

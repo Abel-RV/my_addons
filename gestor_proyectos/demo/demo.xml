@@ -26,5 +26,104 @@
             <field name="value">40</field>
           </record>
 -->
+        <!-- Proyectos de ejemplo -->
+        <record id="demo_proyecto_a" model="gestor_proyectos.proyecto">
+            <field name="name">Proyecto Demo A</field>
+            <field name="descripcion">Proyecto de demostración A para pruebas de avances y estados</field>
+            <field name="fecha_inicio">2026-01-01</field>
+            <field name="fecha_fin">2026-03-31</field>
+            <field name="estado">en_planificacion</field>
+        </record>
+
+        <record id="demo_proyecto_b" model="gestor_proyectos.proyecto">
+            <field name="name">Proyecto Demo B</field>
+            <field name="descripcion">Proyecto de demostración B con trabajos finalizados</field>
+            <field name="fecha_inicio">2026-02-01</field>
+            <field name="fecha_fin">2026-04-30</field>
+            <field name="estado">en_planificacion</field>
+        </record>
+
+        <!-- Trabajos del Proyecto A -->
+        <record id="demo_trabajo_a1" model="gestor_proyectos.trabajo">
+            <field name="descripcion">Trabajo A1 - Implementación inicial</field>
+            <field name="proyecto_id" ref="demo_proyecto_a"/>
+            <field name="responsable">Juan Pérez</field>
+            <field name="fecha_inicio">2026-01-05</field>
+            <field name="fecha_fin">2026-02-15</field>
+            <field name="estado">en_progreso</field>
+            <field name="importancia">alta</field>
+            <field name="avance_individual">45.0</field>
+        </record>
+
+        <record id="demo_trabajo_a2" model="gestor_proyectos.trabajo">
+            <field name="descripcion">Trabajo A2 - Revisión y pruebas</field>
+            <field name="proyecto_id" ref="demo_proyecto_a"/>
+            <field name="responsable">María López</field>
+            <field name="fecha_inicio">2026-02-16</field>
+            <field name="fecha_fin">2026-03-15</field>
+            <field name="estado">pendiente</field>
+            <field name="importancia">media</field>
+            <field name="avance_individual">0.0</field>
+        </record>
+
+        <!-- Trabajo del Proyecto B (finalizado) -->
+        <record id="demo_trabajo_b1" model="gestor_proyectos.trabajo">
+            <field name="descripcion">Trabajo B1 - Entrega final</field>
+            <field name="proyecto_id" ref="demo_proyecto_b"/>
+            <field name="responsable">Equipo B</field>
+            <field name="fecha_inicio">2026-02-10</field>
+            <field name="fecha_fin">2026-03-25</field>
+            <field name="estado">finalizado</field>
+            <field name="importancia">urgente</field>
+            <field name="avance_individual">100.0</field>
+        </record>
+
+        <!-- Actividades para Trabajo A1 -->
+        <record id="demo_actividad_a1_1" model="gestor_proyectos.actividad">
+            <field name="nombreActividad">Diseño de Base</field>
+            <field name="descripcionActividad">Diseño de la arquitectura y modelos</field>
+            <field name="trabajo_id" ref="demo_trabajo_a1"/>
+            <field name="personasInvolucradas">Juan, Ana</field>
+            <field name="fechaInicioActividad">2026-01-06</field>
+            <field name="fechaFinActividad">2026-01-20</field>
+            <field name="estadoActividad">finalizada</field>
+            <field name="avanceIndividual">100.0</field>
+        </record>
+
+        <record id="demo_actividad_a1_2" model="gestor_proyectos.actividad">
+            <field name="nombreActividad">Desarrollo Módulos</field>
+            <field name="descripcionActividad">Implementación de funcionalidades principales</field>
+            <field name="trabajo_id" ref="demo_trabajo_a1"/>
+            <field name="personasInvolucradas">Juan</field>
+            <field name="fechaInicioActividad">2026-01-21</field>
+            <field name="fechaFinActividad">2026-02-10</field>
+            <field name="estadoActividad">en_curso</field>
+            <field name="avanceIndividual">50.0</field>
+        </record>
+
+        <!-- Actividades para Trabajo A2 (pendientes) -->
+        <record id="demo_actividad_a2_1" model="gestor_proyectos.actividad">
+            <field name="nombreActividad">Casos de Prueba</field>
+            <field name="descripcionActividad">Preparar y ejecutar pruebas</field>
+            <field name="trabajo_id" ref="demo_trabajo_a2"/>
+            <field name="personasInvolucradas">María</field>
+            <field name="fechaInicioActividad">2026-02-17</field>
+            <field name="fechaFinActividad">2026-03-01</field>
+            <field name="estadoActividad">pendiente</field>
+            <field name="avanceIndividual">0.0</field>
+        </record>
+
+        <!-- Actividades para Trabajo B1 (finalizadas) -->
+        <record id="demo_actividad_b1_1" model="gestor_proyectos.actividad">
+            <field name="nombreActividad">Entrega Documentación</field>
+            <field name="descripcionActividad">Documentación de usuario y técnica</field>
+            <field name="trabajo_id" ref="demo_trabajo_b1"/>
+            <field name="personasInvolucradas">Equipo B</field>
+            <field name="fechaInicioActividad">2026-02-11</field>
+            <field name="fechaFinActividad">2026-03-01</field>
+            <field name="estadoActividad">finalizada</field>
+            <field name="avanceIndividual">100.0</field>
+        </record>
+
     </data>
 </odoo>
