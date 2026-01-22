@@ -31,16 +31,16 @@
                             <field name="fecha_inicio"/>
                             <field name="fecha_fin"/>
                             <field name="estado" widget="statusbar" statusbar_visible="pendiente,en_progreso,en_revision,finalizado"/>
-                            <field name="promedio_avance" widget="progressbar"/>
+                            <field name="promedio_avance" widget="gauge"/>
                             <field name="actividad_ids">
                                 <list editable="bottom">
                                     <field name="nombreActividad"/>
                                     <field name="estadoActividad" widget="statusbar" statusbar_visible="pendiente,en_curso,en_revision,finalizada,cancelada"/>
-                                    <field name="avanceIndividual" widget="progressbar"/>
+                                    <field name="avanceIndividual" widget="gauge"/>
                                 </list>
                             </field>
                             <field name="importancia"/>
-                            <field name="avance_individual" widget="progressbar"/>
+                            <field name="avance_individual" widget="gauge"/>
                         </group>
                     </sheet>
                 </form>
