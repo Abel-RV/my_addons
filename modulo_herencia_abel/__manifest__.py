@@ -1,10 +1,10 @@
 {
     'name': "modulo_herencia_abel",
 
-    'summary': "Short (1 phrase/line) summary of the module's purpose",
+    'summary': "Modulo de gestión de multas utilizando herencia para el modulo Sistemas de Gestión Empresarial",
 
     'description': """
-Long description of module's purpose
+        Módulo de Odoo para gestionar multas en una empresa, utilizando herencia para extender las funcionalidades del módulo Sistemas de Gestión Empresarial.
     """,
 
     'author': "My Company",
