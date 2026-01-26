@@ -1,30 +1,47 @@
 <odoo>
-    <data>
-<!--
-          <record id="object0" model="modulo_herencia_abel.modulo_herencia_abel">
-            <field name="name">Object 0</field>
-            <field name="value">0</field>
-          </record>
+  <data>
+    <record id="tipo_multa_exceso_velocidad" model="gestion.tipo_multa">
+      <field name="name">Exceso de velocidad</field>
+    </record>
 
-          <record id="object1" model="modulo_herencia_abel.modulo_herencia_abel">
-            <field name="name">Object 1</field>
-            <field name="value">10</field>
-          </record>
+    <record id="tipo_multa_estacionamiento_indebido" model="gestion.tipo_multa">
+      <field name="name">Estacionamiento indebido</field>
+    </record>
 
-          <record id="object2" model="modulo_herencia_abel.modulo_herencia_abel">
-            <field name="name">Object 2</field>
-            <field name="value">20</field>
-          </record>
+    <record id="tipo_multa_alcohol_drogas" model="gestion.tipo_multa">
+      <field name="name">Efectos del alcohol o drogas</field>
+    </record>
 
-          <record id="object3" model="modulo_herencia_abel.modulo_herencia_abel">
-            <field name="name">Object 3</field>
-            <field name="value">30</field>
-          </record>
+    <record id="tipo_multa_movil" model="gestion.tipo_multa">
+      <field name="name">Uso indebido del móvil u otros dispositivos</field>
+    </record>
 
-          <record id="object4" model="modulo_herencia_abel.modulo_herencia_abel">
-            <field name="name">Object 4</field>
-            <field name="value">40</field>
-          </record>
--->
-    </data>
+    <record id="tipo_multa_cinturon" model="gestion.tipo_multa">
+      <field name="name">No usar el cinturón de seguridad</field>
+    </record>
+
+    <record id="tipo_multa_semaforo" model="gestion.tipo_multa">
+      <field name="name">Saltarse semáforos o señales de tráfico</field>
+    </record>
+
+    <record id="tipo_multa_adelantar" model="gestion.tipo_multa">
+      <field name="name">Adelantar de forma indebida</field>
+    </record>
+
+    <record id="tipo_multa_documentacion" model="gestion.tipo_multa">
+      <field name="name">Sin documentación obligatoria</field>
+    </record>
+
+    <record id="tipo_multa_defectos" model="gestion.tipo_multa">
+      <field name="name">Defectos o irregularidades en el vehículo</field>
+    </record>
+
+    <record id="tipo_multa_temeraria" model="gestion.tipo_multa">
+      <field name="name">Conducción temeraria</field>
+    </record>
+
+    <record id="tipo_multa_otros" model="gestion.tipo_multa">
+      <field name="name">Otros</field>
+    </record>
+  </data>
 </odoo>
