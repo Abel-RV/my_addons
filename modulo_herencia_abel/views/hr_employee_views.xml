@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Definimos un nuevo registro de vista en el modelo ir.ui.view -->
+    <record id="view_employee_form_inherit" model="ir.ui.view">
+        <!-- Nombre de la vista (solo para referencia interna) -->
+        <field name="name">hr.employee.form.inherit</field>
+        <!-- Especificamos que esta vista pertenece al modelo hr.employee -->
+        <field name="model">hr.employee</field>
+        <!-- Vista hereda de la vista original del formulario de empleados -->
+        <field name="inherit_id" ref="hr.view_employee_form" />
+        <!-- Aquí modificamos la estructura de la vista original -->
+        <field name="arch" type="xml">
+            <!-- Usamos XPath para ubicar el elemento en el formulario original -->
+            <xpath expr="//notebook" position="inside">
+                <!-- Agregamos una nueva pestaña dentro del notebook -->
+                <page string="Multas">
+                    <!-- Multas asociadas al empleado -->
+                    <field name="multa_ids" widget="one2many_list">
+                        <!-- Vista de formulario embebida para cada multa -->
+                        <form>
+                            <group>
+                                <field name="fecha" />
+                                <!-- Fecha de la multa -->
+                                <field name="descripcion" />
+                                <field name="tipo_multa_id" />
+                                <field name="importe" />
+                                <field name="pagada" />
+                            </group>
+                        </form>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>
