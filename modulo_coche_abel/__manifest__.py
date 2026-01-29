@@ -1,10 +1,10 @@
 {
     'name': "modulo_coche_abel",
 
-    'summary': "Short (1 phrase/line) summary of the module's purpose",
+    'summary': "Modulo de herencia para gestión de coches, para la asignatura de SGE",
 
     'description': """
-Long description of module's purpose
+Modulo de herencia para la gestión de coches, que permite crear y gestionar diferentes modelos de coches, así como sus características y funcionalidades.
     """,
 
     'author': "My Company",
@@ -17,7 +17,7 @@ Long description of module's purpose
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base'],
+    'depends': ['base','hr'],
 
     # always loaded
     'data': [

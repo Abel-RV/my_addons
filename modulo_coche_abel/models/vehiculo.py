@@ -1,4 +1,4 @@
-# from odoo import models, fields, api
+#from odoo import models, fields, api
 
 
 # class modulo_coche_abel(models.Model):
