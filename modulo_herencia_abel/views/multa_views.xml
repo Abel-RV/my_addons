@@ -1,60 +1,66 @@
 <odoo>
   <data>
-    <!-- explicit list view definition -->
-<!--
-    <record model="ir.ui.view" id="modulo_herencia_abel.list">
-      <field name="name">modulo_herencia_abel list</field>
-      <field name="model">modulo_herencia_abel.modulo_herencia_abel</field>
+
+    <record id="view_multa_list" model="ir.ui.view">
+      <field name="name">gestion.multa.list</field>
+      <field name="model">gestion.multa</field>
       <field name="arch" type="xml">
-        <list>
-          <field name="name"/>
-          <field name="value"/>
-          <field name="value2"/>
+        <list string="Listado de Multas">
+          <field name="fecha"/>
+          <field name="empleado_id"/>
+          <field name="tipo_multa_id"/>
+          <field name="importe"/>
+          <field name="pagada" widget="boolean_toggle"/>
         </list>
       </field>
     </record>
--->
 
-    <!-- actions opening views on models -->
-<!--
-    <record model="ir.actions.act_window" id="modulo_herencia_abel.action_window">
-      <field name="name">modulo_herencia_abel window</field>
-      <field name="res_model">modulo_herencia_abel.modulo_herencia_abel</field>
-      <field name="view_mode">list,form</field>
-    </record>
--->
-
-    <!-- server action to the one above -->
-<!--
-    <record model="ir.actions.server" id="modulo_herencia_abel.action_server">
-      <field name="name">modulo_herencia_abel server</field>
-      <field name="model_id" ref="model_modulo_herencia_abel_modulo_herencia_abel"/>
-      <field name="state">code</field>
-      <field name="code">
-        action = {
-          "type": "ir.actions.act_window",
-          "view_mode": "list,form",
-          "res_model": model._name,
-        }
+    <record id="view_multa_form" model="ir.ui.view">
+      <field name="name">gestion.multa.form</field>
+      <field name="model">gestion.multa</field>
+      <field name="arch" type="xml">
+        <form string="Multa">
+          <sheet>
+            <group>
+              <group>
+                <field name="fecha"/>
+                <field name="empleado_id"/>
+                <field name="nombre_empleado" readonly="1"/>
+              </group>
+              <group>
+                <field name="tipo_multa_id"/>
+                <field name="importe"/>
+                <field name="pagada"/>
+              </group>
+            </group>
+            <notebook>
+                <page string="Descripción">
+                    <field name="descripcion"/>
+                </page>
+            </notebook>
+          </sheet>
+        </form>
       </field>
     </record>
--->
 
-    <!-- Top menu item -->
-<!--
-    <menuitem name="modulo_herencia_abel" id="modulo_herencia_abel.menu_root"/>
--->
-    <!-- menu categories -->
-<!--
-    <menuitem name="Menu 1" id="modulo_herencia_abel.menu_1" parent="modulo_herencia_abel.menu_root"/>
-    <menuitem name="Menu 2" id="modulo_herencia_abel.menu_2" parent="modulo_herencia_abel.menu_root"/>
--->
-    <!-- actions -->
-<!--
-    <menuitem name="List" id="modulo_herencia_abel.menu_1_list" parent="modulo_herencia_abel.menu_1"
-              action="modulo_herencia_abel.action_window"/>
-    <menuitem name="Server to list" id="modulo_herencia_abel" parent="modulo_herencia_abel.menu_2"
-              action="modulo_herencia_abel.action_server"/>
--->
+    <record id="action_gestion_multa" model="ir.actions.act_window">
+      <field name="name">Multas</field>
+      <field name="res_model">gestion.multa</field>
+      <field name="view_mode">list,form</field> 
+      <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">
+          ¡Crea la primera multa!
+        </p>
+      </field>
+    </record>
+
+    <menuitem id="menu_gestion_multa_root" name="Gestión de Multas" sequence="10"/>
+
+    <menuitem id="menu_gestion_multa_list" 
+              name="Multas" 
+              parent="menu_gestion_multa_root" 
+              action="action_gestion_multa"
+              sequence="1"/>
+
   </data>
 </odoo>

@@ -1,5 +1,3 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_modulo_herencia_abel_modulo_herencia_abel,modulo_herencia_abel.modulo_herencia_abel,model_modulo_herencia_abel_modulo_herencia_abel,base.group_user,1,1,1,1
-access_modulo_herencia_abel_multa,modulo_herencia_abel.multa,model_modulo_herencia_abel_multa,base.group_user,1,1,1,1
-access_modulo_herencia_abel_tipo_multa,modulo_herencia_abel.tipo_multa,model_modulo_herencia_abel_tipo_multa,base.group_user,1,1,1,1
-access_modulo_herencia_abel_hr_employee,modulo_herencia_abel.hr_employee,model_modulo_herencia_abel_hr_employee,base.group_user,1,1,1,1
+access_gestion_multa,gestion.multa,model_gestion_multa,base.group_user,1,1,1,1
+access_gestion_tipo_multa,gestion.tipo_multa,model_gestion_tipo_multa,base.group_user,1,1,1,1
