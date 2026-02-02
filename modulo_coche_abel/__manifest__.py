@@ -17,7 +17,7 @@ Modulo de herencia para la gestión de coches, que permite crear y gestionar dif
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base','hr'],
+    'depends': ['base','hr','mail'],
 
     # always loaded
     'data': [

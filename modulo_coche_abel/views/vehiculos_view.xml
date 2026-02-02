@@ -4,11 +4,12 @@
             <field name="name">gestion.vehiculo.list</field>
             <field name="model">gestion.vehiculo</field>
             <field name="arch" type="xml">
-                <list>
+                <list decoration-success="not conductor_id">
                     <field name="name"/>
                     <field name="marca"/>
                     <field name="modelo"/>
-                    <field name="conductor_id"/>
+                    <field name="kilometros"/>
+                    <field name="conductor_id" placeholder="Disponible"/>
                 </list>
             </field>
         </record>
