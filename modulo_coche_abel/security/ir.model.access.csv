@@ -1,2 +1,4 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_modulo_coche_abel_modulo_coche_abel,modulo_coche_abel.modulo_coche_abel,model_modulo_coche_abel_modulo_coche_abel,base.group_user,1,1,1,1
+access_gestion_vehiculo,gestion.vehiculo,model_gestion_vehiculo,base.group_user,1,1,1,1
+access_gestion_multa,gestion.multa,model_gestion_multa,base.group_user,1,1,1,1
+access_gestion_tipo_multa,gestion.tipo_multa,model_gestion_tipo_multa,base.group_user,1,1,1,1
