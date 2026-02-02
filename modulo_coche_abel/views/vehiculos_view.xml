@@ -1,0 +1,49 @@
+<odoo>
+  <data>
+    <record id="view_vehiculo_list" model="ir.ui.view">
+        <field name="name">gestion.vehiculo.list</field>
+        <field name="model">gestion.vehiculo</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="marca"/>
+                <field name="modelo"/>
+                <field name="conductor_id"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_vehiculo_form" model="ir.ui.view">
+        <field name="name">gestion.vehiculo.form</field>
+        <field name="model">gestion.vehiculo</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="marca"/>
+                            <field name="modelo"/>
+                        </group>
+                        <group>
+                            <field name="kilometros"/>
+                            <field name="conductor_id"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_gestion_vehiculo" model="ir.actions.act_window">
+        <field name="name">Vehículos</field>
+        <field name="res_model">gestion.vehiculo</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem id="menu_gestion_vehiculo" 
+              name="Vehículos" 
+              parent="multas.menu_root" 
+              action="action_gestion_vehiculo"/>
+  </data>
+</odoo>
