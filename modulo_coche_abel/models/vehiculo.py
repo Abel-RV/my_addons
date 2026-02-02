@@ -1,17 +1,18 @@
-#from odoo import models, fields, api
+from odoo import models, fields, api
 
 
-# class modulo_coche_abel(models.Model):
-#     _name = 'modulo_coche_abel.modulo_coche_abel'
-#     _description = 'modulo_coche_abel.modulo_coche_abel'
+class Vehiculo(models.Model):
+    _name = 'gestion.vehiculo'
+    _description = 'Modelo de Vehículo'
 
-#     name = fields.Char()
-#     value = fields.Integer()
-#     value2 = fields.Float(compute="_value_pc", store=True)
-#     description = fields.Text()
-#
-#     @api.depends('value')
-#     def _value_pc(self):
-#         for record in self:
-#             record.value2 = float(record.value) / 100
+    name = fields.Char(string="Matricula", required=True)
+    marca = fields.Char(string="Marca", required=True)
+    modelo = fields.Char(string="Modelo", required=True)
+    kilometros = fields.Float(string="Kilómetros", required=True)
+
+    conductor_id= fields.Many2one(
+        'hr.employee',
+        string="Conductor",
+        required=True
+    )
 

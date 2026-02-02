@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+    
+        <!-- Top menu item -->
+        <menuitem name="Gestión de Vehículos" id="gestion_vehiculos.menu_root"/>
+
+        <!-- menu categories -->
+        <menuitem name="Vehículos" id="gestion_vehiculos.menu_vehiculos" parent="gestion_vehiculos.menu_root"/>
+        <menuitem name="Multas" id="gestion_vehiculos.menu_multas" parent="gestion_vehiculos.menu_root"/>
+
+        <!-- actions -->
+        <menuitem name="Lista de Vehículos" id="gestion_vehiculos.menu_vehiculos_list" parent="gestion_vehiculos.menu_vehiculos"
+                action="gestion_vehiculos.action_window_vehiculo"/>
+        <menuitem name="Lista de Multas" id="gestion_vehiculos.menu_multas_list" parent="gestion_vehiculos.menu_multas"
+                action="gestion_vehiculos.action_window_multa"/>
+    
+    </data>
+    
+
+</odoo>

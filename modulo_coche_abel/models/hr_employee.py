@@ -8,3 +8,9 @@ class HrEmployee(models.Model):
         'empleado_id',
         string="Multas del Empleado"
     )
+
+    vehiculo_id= fields.One2many(
+        'gestion.vehiculo',
+        'conductor_id',
+        string="Vehículos asignados"
+    )

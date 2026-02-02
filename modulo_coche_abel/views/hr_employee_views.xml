@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+        <!-- explicit list view definition -->
+    
+        <record model="ir.ui.view" id="modulo_coche_abel.list">
+        <field name="name">modulo_coche_abel list</field>
+        <field name="model">modulo_coche_abel.modulo_coche_abel</field>
+        <field name="arch" type="xml">
+            <list>
+            <field name="name"/>
+            <field name="value"/>
+            <field name="value2"/>
+            </list>
+        </field>
+        </record>
+        
+
+</odoo>
