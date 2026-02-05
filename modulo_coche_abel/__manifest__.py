@@ -23,8 +23,9 @@ Modulo de herencia para la gestión de coches, que permite crear y gestionar dif
     'data': [
         'security/ir.model.access.csv',
         'views/menus.xml',             
-        'views/vehiculos_view.xml',
-        'views/multa_views.xml',
+        'views/multa_views.xml',       
+        'views/vehiculos_view.xml',    
+        'views/hr_employee_views.xml',
         'views/templates.xml',
     ],
     # only loaded in demonstration mode

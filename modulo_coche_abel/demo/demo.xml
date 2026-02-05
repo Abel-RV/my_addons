@@ -1,30 +1,56 @@
 <odoo>
     <data>
-<!--
-          <record id="object0" model="modulo_coche_abel.modulo_coche_abel">
-            <field name="name">Object 0</field>
-            <field name="value">0</field>
-          </record>
+        <record id="tipo_multa_velocidad" model="gestion.tipo_multa">
+            <field name="name">Exceso de Velocidad</field>
+        </record>
 
-          <record id="object1" model="modulo_coche_abel.modulo_coche_abel">
-            <field name="name">Object 1</field>
-            <field name="value">10</field>
-          </record>
+        <record id="tipo_multa_aparcamiento" model="gestion.tipo_multa">
+            <field name="name">Mal Aparcamiento</field>
+        </record>
 
-          <record id="object2" model="modulo_coche_abel.modulo_coche_abel">
-            <field name="name">Object 2</field>
-            <field name="value">20</field>
-          </record>
+        <record id="tipo_multa_itv" model="gestion.tipo_multa">
+            <field name="name">ITV Caducada</field>
+        </record>
 
-          <record id="object3" model="modulo_coche_abel.modulo_coche_abel">
-            <field name="name">Object 3</field>
-            <field name="value">30</field>
-          </record>
+        <record id="vehiculo_bmw" model="gestion.vehiculo">
+            <field name="name">1234-BMW</field>
+            <field name="marca">BMW</field>
+            <field name="modelo">Serie 1</field>
+            <field name="kilometros">15000</field>
+            <field name="conductor_id" ref="hr.employee_admin"/>
+        </record>
 
-          <record id="object4" model="modulo_coche_abel.modulo_coche_abel">
-            <field name="name">Object 4</field>
-            <field name="value">40</field>
-          </record>
--->
+        <record id="vehiculo_audi" model="gestion.vehiculo">
+            <field name="name">5678-AUD</field>
+            <field name="marca">Audi</field>
+            <field name="modelo">A3</field>
+            <field name="kilometros">8500</field>
+            <field name="conductor_id" ref="hr.employee_qdp"/>
+        </record>
+
+        <record id="vehiculo_tesla" model="gestion.vehiculo">
+            <field name="name">9012-TSL</field>
+            <field name="marca">Tesla</field>
+            <field name="modelo">Model 3</field>
+            <field name="kilometros">200</field>
+            </record>
+
+        <record id="multa_admin_1" model="gestion.multa">
+            <field name="fecha">2023-10-01</field>
+            <field name="descripcion">Radar en autopista A4 km 30</field>
+            <field name="tipo_multa_id" ref="tipo_multa_velocidad"/>
+            <field name="empleado_id" ref="hr.employee_admin"/>
+            <field name="importe">100.00</field>
+            <field name="pagada">False</field>
+        </record>
+
+        <record id="multa_demo_1" model="gestion.multa">
+            <field name="fecha">2023-10-15</field>
+            <field name="descripcion">Estacionamiento en vado</field>
+            <field name="tipo_multa_id" ref="tipo_multa_aparcamiento"/>
+            <field name="empleado_id" ref="hr.employee_qdp"/>
+            <field name="importe">50.00</field>
+            <field name="pagada">True</field>
+        </record>
     </data>
 </odoo>

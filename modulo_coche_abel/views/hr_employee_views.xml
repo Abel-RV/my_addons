@@ -5,21 +5,30 @@
         <field name="model">hr.employee</field>
         <field name="inherit_id" ref="hr.view_employee_form" />
         <field name="arch" type="xml">
-            
             <xpath expr="//notebook" position="inside">
+                
                 <page string="Multas" invisible="not multa_ids">
-                    <field name="multa_ids" widget="one2many_list"></field>
+                    <field name="multa_ids">
+                        <list>
+                            <field name="fecha" />
+                            <field name="tipo_multa_id" />
+                            <field name="importe" />
+                            <field name="pagada" widget="boolean_toggle"/>
+                        </list>
+                    </field>
                 </page>
 
                 <page string="Vehículos" invisible="not vehiculo_id">
                     <field name="vehiculo_id" readonly="1">
                         <list>
-                            <field name="name"/>
+                            <field name="name" string="Matrícula"/>
                             <field name="marca"/>
                             <field name="modelo"/>
+                            <field name="kilometros"/>
                         </list>
                     </field>
                 </page>
+
             </xpath>
         </field>
     </record>
