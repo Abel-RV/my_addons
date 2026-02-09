@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="report_multas_template">
+            <t t-call="web.html_container">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2>Listado de Multas</h2>
+                        
+                        <table class="table table-sm table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Descripción</th>
+                                    <th>Tipo</th>
+                                    <th>Empleado</th>
+                                    <th>Pagada</th>
+                                    <th class="text-end">Importe</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="docs" t-as="multa">
+                                    <tr>
+                                        <td><span t-field="multa.descripcion"/></td>
+                                        <td><span t-field="multa.tipo_multa_id"/></td>
+                                        <td><span t-field="multa.empleado_id"/></td>
+                                        <td>
+                                            <span t-if="multa.pagada">Sí</span>
+                                            <span t-else="">No</span>
+                                        </td>
+                                        <td class="text-end">
+                                            <span t-field="multa.importe" 
+                                                  t-options='{"widget": "monetary", "display_currency": user.company_id.currency_id}'/>
+                                        </td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+
+                        <div class="row mt-4">
+                            <div class="col-6"></div>
+                            <div class="col-6 text-end">
+                                <strong>Total Importe: </strong>
+                                <span t-esc="sum(docs.mapped('importe'))" 
+                                      t-options='{"widget": "monetary", "display_currency": user.company_id.currency_id}'/>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>
