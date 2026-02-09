@@ -13,7 +13,7 @@
                                     <th>Descripción</th>
                                     <th>Tipo</th>
                                     <th>Empleado</th>
-                                    <th>Pagada</th>
+                                    <th>Estado</th>
                                     <th class="text-end">Importe</th>
                                 </tr>
                             </thead>
@@ -24,8 +24,8 @@
                                         <td><span t-field="multa.tipo_multa_id"/></td>
                                         <td><span t-field="multa.empleado_id"/></td>
                                         <td>
-                                            <span t-if="multa.pagada">Sí</span>
-                                            <span t-else="">No</span>
+                                            <span t-if="multa.pagada" style="color: green;">Pagada</span>
+                                            <span t-else="" style="color: red;">No Pagada</span>
                                         </td>
                                         <td class="text-end">
                                             <span t-field="multa.importe" 
